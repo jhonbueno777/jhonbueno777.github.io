@@ -1,0 +1,107 @@
+/* Basic Reset */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Base Grid Layout (like the provided picture) */
+body {
+    display: grid;
+    /* This creates 4 columns and 4 rows, as in the reference image. */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    min-height: 100vh;
+}
+
+/* Header - spans 4 columns, 1st row */
+.grid-header {
+    background-color: #87CEEB; /* lightblue */
+    grid-column: 1 / span 4;
+    grid-row: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+.grid-header h1 {
+    margin: 0;
+}
+
+/* Aside - spans 1 column, 2nd row, left-aligned */
+.grid-aside {
+    background-color: #e0f7fa; /* optional lighter color to differentiate */
+    grid-column: 1;
+    grid-row: 2;
+    padding: 20px;
+    border-right: 2px dashed #000; /* mimic grid line in reference image */
+}
+
+.grid-aside h3 {
+    margin-top: 0;
+}
+
+.grid-aside ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.grid-aside li {
+    margin-bottom: 10px;
+}
+
+/* Main Area - spans remaining 3 columns, 2nd row */
+.grid-main {
+    background-color: #f0f8ff; /* optional lighter color */
+    grid-column: 2 / span 3;
+    grid-row: 2;
+    padding: 20px;
+}
+
+/* Flexbox container for each project */
+.project-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    background: white;
+}
+
+/* Flexbox rules to layout image and text inside the project-container */
+.project-container p {
+    margin: 10px 0 0 0;
+    font-size: 0.9em;
+}
+
+.project-screenshot {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+}
+
+/* Footer - spans 4 columns, 3rd row */
+.grid-footer {
+    background-color: #87CEEB; /* lightblue */
+    grid-column: 1 / span 4;
+    grid-row: 3;
+    padding: 15px;
+    text-align: center;
+    border-top: 2px dashed #000; /* mimic grid line in reference image */
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/* BONUS POINT 3: Mobile Responsive Layout (one column) */
+/* This media query re-defines the layout for screen widths below 600px */
+@media (max-width: 600px) {
+    body {
+        grid-template-columns: 1fr; /* single column for mobile */
+        grid-template-rows: auto auto auto auto; /* 4 distinct rows */
+    }
+
+    /* Redefine placement for mobile stack */
+    .grid-header { grid-column: 1; grid-row: 1; }
+    .grid-aside  { grid-column: 1; grid-row: 2; border-right: none; border-bottom: 2px dashed #000; }
+    .grid-main   { grid-column: 1; grid-row: 3; }
+    .grid-footer { grid-column: 1; grid-row: 4; }
+}
